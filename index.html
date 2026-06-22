@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in or create an account — One Step Ahead</title>
+<meta name="description" content="Sign up or log in to One Step Ahead — structured, mentor-led courses in AI, Machine Learning, UPSC and NEET preparation.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='14' width='4' height='8' rx='1' fill='%233FA66B'/%3E%3Crect x='9' y='9' width='4' height='13' rx='1' fill='%232F7D52'/%3E%3Crect x='16' y='4' width='4' height='18' rx='1' fill='%23163226'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --vanilla:        #FAF6EC;
+  --vanilla-deep:   #EFE3C4;
+  --vanilla-card:   #FFFDF7;
+  --ink:            #28261D;
+  --ink-soft:       #6E6A57;
+  --ink-faint:      #9B9580;
+ 
+  --forest:         #1F4A3D;
+  --forest-deep:    #133126;
+  --forest-deeper:  #0E251C;
+ 
+  --green:          #3FA66B;
+  --green-deep:     #2C7A50;
+  --green-light:    #9FE3BC;
+ 
+  --gold:           #C9A24B;
+  --danger:         #B3463C;
+  --danger-bg:      #FBEDEA;
+ 
+  --radius-lg:   22px;
+  --radius-md:   14px;
+  --radius-sm:   10px;
+  --radius-pill: 999px;
+ 
+  --shadow-card: 0 30px 70px -28px rgba(15,40,30,0.32);
+  --shadow-soft: 0 10px 24px -12px rgba(15,40,30,0.18);
+ 
+  --font-display: "Fraunces","Iowan Old Style",Georgia,serif;
+  --font-body:    "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:    "JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
+ 
+  --ease: cubic-bezier(.65,0,.35,1);
+}
+ 
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family: var(--font-body);
+  background: var(--vanilla);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,p,ul{ margin:0; }
+button{ font-family:inherit; cursor:pointer; }
+input{ font-family:inherit; }
+a{ color:var(--green-deep); }
+img,svg{ display:block; max-width:100%; }
+*:focus{ outline:none; }
+*:focus-visible{
+  outline: 2px solid var(--green-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+ 
+/* ============================================================
+   PAGE LAYOUT
+   ============================================================ */
+.page{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(380px,44%) 1fr;
+}
+ 
+/* ============================================================
+   BRAND / LEFT PANEL
+   ============================================================ */
+.brand-panel{
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgba(63,166,107,0.18), transparent 60%),
+    linear-gradient(165deg, var(--forest) 0%, var(--forest-deep) 62%, var(--forest-deeper) 100%);
+  color: var(--vanilla);
+  padding: 3rem 3.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.brand-panel::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: radial-gradient(rgba(250,246,236,0.07) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  pointer-events:none;
+}
+ 
+.brand-top{ position:relative; z-index:1; }
+ 
+.logo{
+  display:flex; align-items:center; gap:.6rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--vanilla);
+}
+.logo-mark{ display:flex; align-items:flex-end; gap:3px; height:18px; }
+.logo-mark span{ display:block; width:5px; border-radius:2px 2px 0 0; }
+.logo-mark span:nth-child(1){ height:8px;  background:var(--green); }
+.logo-mark span:nth-child(2){ height:13px; background:var(--green-light); }
+.logo-mark span:nth-child(3){ height:18px; background:var(--vanilla); }
+ 
+.brand-copy{ position:relative; z-index:1; margin-top:2.6rem; max-width:30rem; }
+.brand-copy h1{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem,3vw,2.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--vanilla);
+}
+.brand-copy p{
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: rgba(250,246,236,0.78);
+  max-width: 26rem;
+}
+ 
+.ascent-wrap{ position:relative; z-index:1; margin:2.2rem 0 1.6rem; }
+.ascent{ width:100%; height:auto; max-height:230px; }
+.ascent .bar-label{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: rgba(250,246,236,0.82);
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+.ascent .connector{
+  fill:none;
+  stroke: rgba(250,246,236,0.28);
+  stroke-width:1.5;
+  stroke-dasharray: 4 6;
+  stroke-linecap: round;
+}
+.ascent .marker-halo{
+  fill: var(--green-light);
+  opacity:0;
+  transform: translate(375px,56px);
+  transform-box: view-box;
+  animation: reveal .5s ease-out 2.3s forwards, pulse 2.4s ease-in-out 2.7s infinite;
+}
+.ascent .marker-dot{
+  fill: var(--vanilla);
+  stroke: var(--green-light);
+  stroke-width:2.5;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: climb 2.2s var(--ease) 1 both;
+}
+.ascent .peak-star{ fill:var(--gold); opacity:0.9; }
+ 
+@keyframes climb{
+  0%  { transform:translate(75px,196px);  opacity:0; }
+  8%  { opacity:1; }
+  34% { transform:translate(175px,146px); }
+  64% { transform:translate(275px,96px);  }
+  100%{ transform:translate(375px,56px);  }
+}
+@keyframes reveal{ from{opacity:0;} to{opacity:0.55;} }
+@keyframes pulse{
+  0%,100%{ transform:translate(375px,56px) scale(1);   opacity:0.45; }
+  50%    { transform:translate(375px,56px) scale(2.1); opacity:0; }
+}
+ 
+.stats{
+  position:relative; z-index:1;
+  display:flex; gap:2rem;
+  padding-top:1.6rem;
+  border-top: 1px solid rgba(250,246,236,0.14);
+}
+.stat strong{
+  display:block;
+  font-family: var(--font-display);
+  font-size:1.5rem; font-weight:600;
+  color:var(--vanilla);
+}
+.stat span{ font-size:0.76rem; color:rgba(250,246,236,0.62); letter-spacing:0.01em; }
+ 
+.brand-foot{
+  position:relative; z-index:1;
+  margin-top:2rem;
+  font-size:0.78rem;
+  color:rgba(250,246,236,0.45);
+  font-style:italic;
+}
+ 
+/* ============================================================
+   AUTH / RIGHT PANEL
+   ============================================================ */
+.auth-panel{
+  background: var(--vanilla);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:2.6rem 1.6rem 3rem;
+  position:relative;
+}
+.auth-panel::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: radial-gradient(rgba(31,74,61,0.035) 1px, transparent 1.4px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+ 
+.back-link{
+  position:relative; z-index:1;
+  align-self:flex-start;
+  font-size:0.82rem; font-weight:600;
+  color:var(--ink-soft);
+  text-decoration:none;
+  margin-bottom:2rem;
+  display:inline-flex; align-items:center; gap:.4rem;
+}
+.back-link:hover{ color:var(--green-deep); }
+ 
+.auth-card{
+  position:relative; z-index:1;
+  width:100%; max-width:432px;
+  background:var(--vanilla-card);
+  border:1px solid var(--vanilla-deep);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+  padding:2.2rem 2.2rem 2rem;
+}
+ 
+/* ── Tabs ── */
+.tabs{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:var(--vanilla-deep);
+  border-radius:var(--radius-pill);
+  padding:4px;
+  margin-bottom:1.8rem;
+}
+.tab-indicator{
+  position:absolute; top:4px; left:4px;
+  width:calc(50% - 4px); height:calc(100% - 8px);
+  background:var(--forest);
+  border-radius:var(--radius-pill);
+  transition:transform .32s var(--ease);
+  z-index:0;
+}
+.tab{
+  position:relative; z-index:1;
+  border:none; background:transparent;
+  padding:0.6rem 0.8rem;
+  font-size:0.86rem; font-weight:700;
+  border-radius:var(--radius-pill);
+  color:var(--ink-soft);
+  transition:color .25s var(--ease);
+}
+.tab[aria-selected="true"]{ color:var(--vanilla); }
+ 
+/* ── Panels ── */
+.panel{ display:none; }
+.panel.is-active{ display:block; animation:fadein .35s var(--ease); }
+@keyframes fadein{ from{opacity:0;transform:translateY(4px);} to{opacity:1;transform:none;} }
+ 
+.panel h2{
+  font-family:var(--font-display);
+  font-size:1.5rem; font-weight:600;
+  color:var(--forest-deep);
+}
+.panel > p.lede{
+  margin-top:0.35rem;
+  font-size:0.88rem;
+  color:var(--ink-soft);
+  margin-bottom:1.5rem;
+}
+ 
+/* ── Fields ── */
+.field{ margin-bottom:1.05rem; }
+.field label{
+  display:block;
+  font-size:0.78rem; font-weight:700;
+  color:var(--forest-deep);
+  margin-bottom:0.4rem;
+  letter-spacing:0.01em;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"]{
+  width:100%;
+  padding:0.72rem 0.85rem;
+  background:var(--vanilla);
+  border:1.5px solid var(--vanilla-deep);
+  border-radius:var(--radius-sm);
+  font-size:0.92rem;
+  color:var(--ink);
+  transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.field input::placeholder{ color:var(--ink-faint); }
+.field input:focus{
+  border-color:var(--green-deep);
+  box-shadow:0 0 0 4px rgba(63,166,107,0.14);
+}
+.field.has-error input{ border-color:var(--danger); }
+.field.has-error.shake{ animation:shake .32s linear; }
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-5px);}
+  75%{transform:translateX(5px);}
+}
+.field-error{
+  min-height:1.1em;
+  margin-top:0.35rem;
+  font-size:0.76rem;
+  color:var(--danger);
+  font-weight:600;
+}
+ 
+.input-with-action{ position:relative; }
+.input-with-action input{ padding-right:2.6rem; }
+.icon-toggle{
+  position:absolute; right:0.5rem; top:50%; transform:translateY(-50%);
+  border:none; background:transparent;
+  width:32px; height:32px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  color:var(--ink-soft);
+}
+.icon-toggle:hover{ background:var(--vanilla-deep); }
+.icon-toggle svg{ width:18px; height:18px; }
+.icon-toggle .eye-slash{ transition:opacity .15s; }
+.icon-toggle.is-visible .eye-slash{ opacity:0; }
+ 
+/* ── Strength meter ── */
+.strength-meter{ display:flex; gap:5px; margin-top:0.55rem; }
+.strength-meter span{
+  flex:1; height:4px; border-radius:3px;
+  background:var(--vanilla-deep);
+  transition:background .25s var(--ease);
+}
+.strength-meter span.is-on:nth-child(1){ background:var(--danger); }
+.strength-meter span.is-on:nth-child(2){ background:var(--gold); }
+.strength-meter span.is-on:nth-child(3),
+.strength-meter span.is-on:nth-child(4){ background:var(--green); }
+.strength-label{
+  margin-top:0.45rem;
+  font-size:0.74rem;
+  color:var(--ink-faint);
+}
+ 
+/* ── Course-interest chips ── */
+.chip-group{ display:flex; flex-wrap:wrap; gap:0.5rem; }
+.chip{
+  border:1.5px solid var(--vanilla-deep);
+  background:var(--vanilla);
+  color:var(--ink-soft);
+  font-size:0.8rem; font-weight:700;
+  padding:0.45rem 0.85rem;
+  border-radius:var(--radius-pill);
+  transition:all .2s var(--ease);
+}
+.chip:hover{ border-color:var(--green); color:var(--forest-deep); }
+.chip.is-active{
+  background:var(--forest);
+  border-color:var(--forest);
+  color:var(--vanilla);
+}
+ 
+/* ── Row / checkbox / links ── */
+.row-between{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:1.1rem; gap:1rem;
+}
+.checkbox{
+  display:flex; align-items:flex-start; gap:0.55rem;
+  font-size:0.82rem; color:var(--ink-soft);
+  cursor:pointer;
+}
+.checkbox input{ margin-top:2px; width:16px; height:16px; accent-color:var(--green-deep); flex-shrink:0; }
+.checkbox a{ color:var(--forest-deep); font-weight:700; text-decoration:underline; }
+.terms{ margin-bottom:0.3rem; }
+ 
+.link-btn{
+  border:none; background:none; padding:0;
+  font-size:0.8rem; font-weight:700;
+  color:var(--green-deep);
+  text-decoration:underline;
+}
+.link-btn:hover{ color:var(--forest-deep); }
+ 
+.inline-note{
+  font-size:0.78rem; color:var(--ink-soft);
+  background:var(--vanilla-deep);
+  border-radius:var(--radius-sm);
+  padding:0.6rem 0.75rem;
+  margin:-0.4rem 0 1.1rem;
+}
+ 
+/* ── Primary button ── */
+.btn-primary{
+  width:100%; position:relative;
+  border:none;
+  background:var(--green-deep);
+  color:#fff;
+  font-size:0.94rem; font-weight:700;
+  padding:0.85rem 1rem;
+  border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-soft);
+  transition:transform .15s var(--ease), background .2s var(--ease);
+}
+.btn-primary:hover{ background:var(--forest); }
+.btn-primary:active{ transform:scale(0.985); }
+.btn-primary:disabled{ cursor:default; opacity:.7; }
+.btn-label{ transition:opacity .15s var(--ease); }
+.btn-primary.is-loading .btn-label{ opacity:0; }
+.btn-spinner{
+  display:none;
+  position:absolute; left:50%; top:50%;
+  width:18px; height:18px;
+  margin:-9px 0 0 -9px;
+  border:2.5px solid rgba(255,255,255,0.35);
+  border-top-color:#fff;
+  border-radius:50%;
+}
+.btn-primary.is-loading .btn-spinner{ display:block; animation:spin .7s linear infinite; }
+@keyframes spin{ to{transform:rotate(360deg);} }
+ 
+/* ── Divider ── */
+.divider{
+  display:flex; align-items:center; gap:0.8rem;
+  margin:1.4rem 0 1.2rem;
+  color:var(--ink-faint);
+  font-size:0.74rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+}
+.divider::before,.divider::after{
+  content:""; flex:1; height:1px; background:var(--vanilla-deep);
+}
+ 
+/* ── Social buttons ── */
+.social-row{ display:flex; gap:0.7rem; margin-bottom:1.3rem; }
+.btn-social{
+  flex:1;
+  display:flex; align-items:center; justify-content:center; gap:0.5rem;
+  border:1.5px solid var(--vanilla-deep);
+  background:var(--vanilla);
+  color:var(--ink);
+  font-size:0.85rem; font-weight:600;
+  padding:0.6rem 0.7rem;
+  border-radius:var(--radius-sm);
+  transition:border-color .2s var(--ease), transform .15s var(--ease);
+}
+.btn-social:hover{ border-color:var(--green); transform:translateY(-1px); }
+.btn-social svg{ width:18px; height:18px; flex-shrink:0; }
+ 
+.switch-text{ text-align:center; font-size:0.85rem; color:var(--ink-soft); }
+ 
+/* ── Toast ── */
+.toast{
+  position:fixed; left:50%; bottom:1.6rem;
+  transform:translate(-50%,12px);
+  background:var(--forest-deep);
+  color:var(--vanilla);
+  font-size:0.82rem;
+  padding:0.75rem 1.1rem;
+  border-radius:var(--radius-sm);
+  max-width:90vw;
+  box-shadow:var(--shadow-card);
+  opacity:0; pointer-events:none;
+  transition:all .25s var(--ease);
+  z-index:60;
+}
+.toast.is-visible{ opacity:1; transform:translate(-50%,0); }
+ 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:980px){
+  .page{ grid-template-columns:1fr; }
+  .brand-panel{ padding:2rem 1.6rem 1.8rem; }
+  .brand-copy{ margin-top:1.4rem; }
+  .brand-copy h1{ font-size:1.6rem; }
+  .ascent-wrap{ margin:1.2rem 0 0.6rem; }
+  .ascent{ max-height:150px; }
+  .stats{ display:none; }
+  .brand-foot{ display:none; }
+  .auth-panel{ padding-top:1.8rem; }
+}
+@media(max-width:480px){
+  .auth-card{ padding:1.6rem 1.3rem 1.6rem; }
+  .social-row{ flex-direction:column; }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+  }
+}
+</style>
+</head>
+<body>
+ 
+<div class="page">
+ 
+  <!-- ═══════════════ BRAND PANEL ═══════════════ -->
+  <aside class="brand-panel">
+    <div class="brand-top">
+      <div class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        ONE STEP AHEAD
+      </div>
+      <div class="brand-copy">
+        <h1>The next rank.<br>The next model.<br>The next you.</h1>
+        <p>Structured, mentor-led courses in AI, Machine Learning, UPSC and NEET preparation — for people who'd rather start today than wait for someday.</p>
+      </div>
+    </div>
+ 
+    <div class="ascent-wrap">
+      <svg class="ascent" viewBox="0 0 460 280" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#1B4537"/>
+            <stop offset="100%" stop-color="#3FA66B"/>
+          </linearGradient>
+        </defs>
+        <path class="connector" d="M75 196 L175 146 L275 96 L375 56"/>
+        <g><rect x="40"  y="200" width="70" height="60"  rx="8" fill="url(#barGrad)"/><text class="bar-label" x="75"  y="178">AI</text></g>
+        <g><rect x="140" y="150" width="70" height="110" rx="8" fill="url(#barGrad)"/><text class="bar-label" x="175" y="128">ML</text></g>
+        <g><rect x="240" y="100" width="70" height="160" rx="8" fill="url(#barGrad)"/><text class="bar-label" x="275" y="78">UPSC</text></g>
+        <g><rect x="340" y="60"  width="70" height="200" rx="8" fill="url(#barGrad)"/><text class="bar-label" x="375" y="38">NEET</text></g>
+        <path class="peak-star" d="M390 18 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z"/>
+        <circle class="marker-halo" cx="0" cy="0" r="14"/>
+        <circle class="marker-dot"  cx="0" cy="0" r="8"/>
+      </svg>
+    </div>
+ 
+    <div class="stats">
+      <div class="stat"><strong>52K+</strong><span>learners on track</span></div>
+      <div class="stat"><strong>4</strong><span>expert-led tracks</span></div>
+      <div class="stat"><strong>1,200+</strong><span>mentor hours logged</span></div>
+    </div>
+    <p class="brand-foot">© 2026 One Step Ahead. Built for the ones climbing.</p>
+  </aside>
+ 
+  <!-- ═══════════════ AUTH PANEL ═══════════════ -->
+  <main class="auth-panel">
+    <a class="back-link" href="#">← Back to onestepahead.com</a>
+ 
+    <div class="auth-card">
+      <div class="tabs" role="tablist" aria-label="Log in or create an account">
+        <span class="tab-indicator" aria-hidden="true"></span>
+        <button class="tab" role="tab" id="tab-login"  aria-selected="true"  aria-controls="panel-login"  tabindex="0">Log in</button>
+        <button class="tab" role="tab" id="tab-signup" aria-selected="false" aria-controls="panel-signup" tabindex="-1">Create account</button>
+      </div>
+ 
+      <!-- ── LOGIN PANEL ── -->
+      <section class="panel is-active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+        <h2>Welcome back</h2>
+        <p class="lede">Log in to pick up your course right where you left off.</p>
+ 
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="login-email">Email address</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@example.com">
+            <p class="field-error" id="login-email-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <div class="input-with-action">
+              <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter your password">
+              <button type="button" class="icon-toggle" data-toggle-for="login-password" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"/>
+                </svg>
+              </button>
+            </div>
+            <p class="field-error" id="login-password-error" aria-live="polite"></p>
+          </div>
+          <div class="row-between">
+            <label class="checkbox"><input type="checkbox" id="login-remember"> <span>Remember me</span></label>
+            <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+          </div>
+          <p class="inline-note" id="forgotNote" hidden></p>
+          <button type="submit" class="btn-primary" id="loginSubmit">
+            <span class="btn-label">Log in</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+ 
+        <div class="divider"><span>or continue with</span></div>
+        <div class="social-row">
+          <button type="button" class="btn-social" data-provider="Google">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9"/>
+              <text x="12" y="16" font-size="10" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="700">G</text>
+            </svg>
+            Google
+          </button>
+          <button type="button" class="btn-social" data-provider="Phone OTP">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="2" width="12" height="20" rx="2"/>
+              <line x1="11" y1="18" x2="13" y2="18"/>
+            </svg>
+            Phone OTP
+          </button>
+        </div>
+        <p class="switch-text">New here? <button type="button" class="link-btn" data-switch="signup">Create an account</button></p>
+      </section>
+ 
+      <!-- ── SIGNUP PANEL ── -->
+      <section class="panel" id="panel-signup" role="tabpanel" aria-labelledby="tab-signup">
+        <h2>Start climbing</h2>
+        <p class="lede">Create your account — it takes less than a minute.</p>
+ 
+        <form id="signupForm" novalidate>
+          <div class="field">
+            <label for="signup-name">Full name</label>
+            <input type="text" id="signup-name" name="name" autocomplete="name" placeholder="Your full name">
+            <p class="field-error" id="signup-name-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="signup-email">Email address</label>
+            <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="you@example.com">
+            <p class="field-error" id="signup-email-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="signup-password">Password</label>
+            <div class="input-with-action">
+              <input type="password" id="signup-password" name="password" autocomplete="new-password" placeholder="Create a password">
+              <button type="button" class="icon-toggle" data-toggle-for="signup-password" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"/>
+                </svg>
+              </button>
+            </div>
+            <div class="strength-meter" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <p class="strength-label" id="strengthLabel">Use 8+ characters with a number</p>
+            <p class="field-error" id="signup-password-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="signup-confirm">Confirm password</label>
+            <div class="input-with-action">
+              <input type="password" id="signup-confirm" name="confirm" autocomplete="new-password" placeholder="Re-enter your password">
+              <button type="button" class="icon-toggle" data-toggle-for="signup-confirm" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <line class="eye-slash" x1="3" y1="3" x2="21" y2="21"/>
+                </svg>
+              </button>
+            </div>
+            <p class="field-error" id="signup-confirm-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label id="interest-label">What brings you here?</label>
+            <div class="chip-group" role="group" aria-labelledby="interest-label" data-value="">
+              <button type="button" class="chip" data-value="ai-ml">AI &amp; ML</button>
+              <button type="button" class="chip" data-value="upsc">UPSC</button>
+              <button type="button" class="chip" data-value="neet">NEET</button>
+              <button type="button" class="chip" data-value="exploring">Just exploring</button>
+            </div>
+          </div>
+          <label class="checkbox terms">
+            <input type="checkbox" id="signup-terms">
+            <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></span>
+          </label>
+          <p class="field-error" id="terms-error" aria-live="polite"></p>
+          <button type="submit" class="btn-primary" id="signupSubmit">
+            <span class="btn-label">Create account</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+ 
+        <div class="divider"><span>or continue with</span></div>
+        <div class="social-row">
+          <button type="button" class="btn-social" data-provider="Google">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9"/>
+              <text x="12" y="16" font-size="10" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="700">G</text>
+            </svg>
+            Google
+          </button>
+          <button type="button" class="btn-social" data-provider="Phone OTP">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="2" width="12" height="20" rx="2"/>
+              <line x1="11" y1="18" x2="13" y2="18"/>
+            </svg>
+            Phone OTP
+          </button>
+        </div>
+        <p class="switch-text">Already a learner? <button type="button" class="link-btn" data-switch="login">Log in</button></p>
+      </section>
+    </div><!-- /auth-card -->
+  </main>
+</div><!-- /page -->
+ 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+ 
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPT 1 — Page interactivity (tabs, validation, UI)
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+ 
+  /* ── Friendly Firebase error messages ── */
+  function friendlyAuthError(err){
+    const map = {
+      'auth/invalid-email':            'That email address looks invalid.',
+      'auth/user-disabled':            'This account has been disabled.',
+      'auth/user-not-found':           "We couldn't find an account with that email.",
+      'auth/wrong-password':           'Incorrect password — try again.',
+      'auth/invalid-credential':       "We couldn't match that email and password.",
+      'auth/email-already-in-use':     'That email is already registered — try logging in instead.',
+      'auth/weak-password':            'Choose a stronger password (8+ characters).',
+      'auth/too-many-requests':        'Too many attempts — please wait a moment and try again.',
+      'auth/network-request-failed':   'Network error — check your connection and try again.',
+      'auth/operation-not-allowed':    "Email/Password sign-in isn't turned on — enable it in Firebase Console → Authentication → Sign-in method.",
+      'auth/configuration-not-found':  "Email/Password sign-in isn't turned on — enable it in Firebase Console → Authentication → Sign-in method.",
+      'auth/unauthorized-domain':      "This domain isn't authorised yet — add it in Firebase Console → Authentication → Authorized domains.",
+      'auth/api-key-not-valid':        'Firebase API key looks invalid — double-check firebaseConfig.',
+      'auth/invalid-api-key':          'Firebase API key looks invalid — double-check firebaseConfig.'
+    };
+    return map[err.code] || `Something went wrong${err.code ? ` (${err.code})` : ''}. Check the browser console (F12) for details.`;
+  }
+ 
+  /* ── Tab switching ── */
+  const tabLogin    = document.getElementById('tab-login');
+  const tabSignup   = document.getElementById('tab-signup');
+  const panelLogin  = document.getElementById('panel-login');
+  const panelSignup = document.getElementById('panel-signup');
+  const indicator   = document.querySelector('.tab-indicator');
+  const tabsWrap    = document.querySelector('.tabs');
+ 
+  function activate(which){
+    const isLogin = which === 'login';
+    tabLogin.setAttribute('aria-selected',  String(isLogin));
+    tabSignup.setAttribute('aria-selected', String(!isLogin));
+    tabLogin.tabIndex  =  isLogin ? 0 : -1;
+    tabSignup.tabIndex = !isLogin ? 0 : -1;
+    panelLogin.classList.toggle('is-active',  isLogin);
+    panelSignup.classList.toggle('is-active', !isLogin);
+    indicator.style.transform = isLogin ? 'translateX(0%)' : 'translateX(100%)';
+  }
+  tabLogin.addEventListener('click',  () => activate('login'));
+  tabSignup.addEventListener('click', () => activate('signup'));
+  document.querySelectorAll('[data-switch]').forEach(btn => {
+    btn.addEventListener('click', () => activate(btn.dataset.switch));
+  });
+  tabsWrap.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+      const goSignup = document.activeElement === tabLogin;
+      activate(goSignup ? 'signup' : 'login');
+      (goSignup ? tabSignup : tabLogin).focus();
+    }
+  });
+ 
+  /* ── Password show/hide ── */
+  document.querySelectorAll('.icon-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.toggleFor);
+      const willShow = input.type === 'password';
+      input.type = willShow ? 'text' : 'password';
+      btn.classList.toggle('is-visible', willShow);
+      btn.setAttribute('aria-label', willShow ? 'Hide password' : 'Show password');
+    });
+  });
+ 
+  /* ── Course-interest chips ── */
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      chip.closest('.chip-group').dataset.value = chip.dataset.value;
+    });
+  });
+ 
+  /* ── Password strength meter ── */
+  const signupPw     = document.getElementById('signup-password');
+  const strengthBars = document.querySelectorAll('.strength-meter span');
+  const strengthLbl  = document.getElementById('strengthLabel');
+  const strengthCopy = [
+    'Use 8+ characters with a number',
+    'Weak — add a number or symbol',
+    'Good — add a symbol for extra strength',
+    'Strong password',
+    'Strong password'
+  ];
+  signupPw.addEventListener('input', () => {
+    const v = signupPw.value;
+    let score = 0;
+    if(v.length >= 8) score++;
+    if(/[0-9]/.test(v)) score++;
+    if(/[a-z]/.test(v) && /[A-Z]/.test(v)) score++;
+    if(/[^A-Za-z0-9]/.test(v)) score++;
+    strengthBars.forEach((b,i) => b.classList.toggle('is-on', i < score));
+    strengthLbl.textContent = v.length === 0 ? strengthCopy[0] : strengthCopy[score];
+  });
+ 
+  /* ── Forgot password ── */
+  const forgotBtn  = document.getElementById('forgotBtn');
+  const forgotNote = document.getElementById('forgotNote');
+  forgotBtn.addEventListener('click', async () => {
+    const email = document.getElementById('login-email').value.trim();
+    if(!emailRe.test(email)){
+      forgotNote.textContent = 'Enter your email above first, then click "Forgot password?" again.';
+      forgotNote.hidden = false; return;
+    }
+    if(!window.osaAuth || !window.osaAuth.ready){
+      forgotNote.textContent = 'Firebase is not connected — check the browser console (F12).';
+      forgotNote.hidden = false; return;
+    }
+    forgotNote.textContent = 'Sending reset link…';
+    forgotNote.hidden = false;
+    try{
+      await window.osaAuth.resetPassword(email);
+      forgotNote.textContent = `Check ${email} for a password reset link.`;
+    } catch(err){
+      forgotNote.textContent = friendlyAuthError(err);
+    }
+  });
+ 
+  /* ── Social button toasts ── */
+  document.querySelectorAll('.btn-social').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showToast(`${btn.dataset.provider} sign-in coming soon.`);
+    });
+  });
+ 
+  /* ── Toast ── */
+  let toastTimer;
+  function showToast(msg){
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 4000);
+  }
+ 
+  /* ── Field error helpers ── */
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ 
+  function setError(inputId, msg){
+    const err   = document.getElementById(inputId + '-error');
+    const field = document.getElementById(inputId)?.closest('.field');
+    if(err)   err.textContent = msg;
+    if(field){ field.classList.add('has-error'); field.classList.remove('shake'); requestAnimationFrame(() => field.classList.add('shake')); }
+  }
+  function clearError(inputId){
+    const err   = document.getElementById(inputId + '-error');
+    const field = document.getElementById(inputId)?.closest('.field');
+    if(err)   err.textContent = '';
+    if(field) field.classList.remove('has-error','shake');
+  }
+  function setLoading(btn, on){
+    btn.classList.toggle('is-loading', on);
+    btn.disabled = on;
+  }
+ 
+  /* ── LOGIN submit ── */
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    let valid = true;
+    const email    = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    clearError('login-email'); clearError('login-password');
+    if(!emailRe.test(email))   { setError('login-email',    'Enter a valid email address.'); valid = false; }
+    if(!password.length)       { setError('login-password', 'Enter your password.');         valid = false; }
+    if(!valid) return;
+ 
+    const btn = document.getElementById('loginSubmit');
+    if(!window.osaAuth || !window.osaAuth.ready){
+      setError('login-password', 'Firebase is not connected — check the browser console (F12).'); return;
+    }
+    setLoading(btn, true);
+    try{
+      const cred = await window.osaAuth.signIn(email, password);
+      const user = cred.user;
+      // Fire-and-forget — do NOT await so sheet never blocks redirect
+      window.osaAuth.sendToSheet({ type:'login', uid: user.uid, name: user.displayName || '', email: user.email, interest:'' });
+      // Redirect immediately after successful login
+      window.location.href = 'service.html';
+    } catch(err){
+      setLoading(btn, false);
+      console.error('Login error:', err);
+      setError('login-password', friendlyAuthError(err));
+    }
+  });
+ 
+  /* ── SIGNUP submit ── */
+  document.getElementById('signupForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    let valid = true;
+    const name     = document.getElementById('signup-name').value.trim();
+    const email    = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value;
+    const confirm  = document.getElementById('signup-confirm').value;
+    const terms    = document.getElementById('signup-terms').checked;
+    clearError('signup-name'); clearError('signup-email');
+    clearError('signup-password'); clearError('signup-confirm');
+    document.getElementById('terms-error').textContent = '';
+ 
+    if(name.length < 2)         { setError('signup-name',     'Tell us your name — at least 2 characters.'); valid = false; }
+    if(!emailRe.test(email))    { setError('signup-email',    'Enter a valid email address.');                valid = false; }
+    if(password.length < 8)     { setError('signup-password', 'Use at least 8 characters.');                 valid = false; }
+    if(confirm !== password)    { setError('signup-confirm',  'Passwords do not match.');                    valid = false; }
+    if(!terms){ document.getElementById('terms-error').textContent = 'Please accept the Terms to continue.'; valid = false; }
+    if(!valid) return;
+ 
+    const btn = document.getElementById('signupSubmit');
+    if(!window.osaAuth || !window.osaAuth.ready){
+      setError('signup-confirm', 'Firebase is not connected — check the browser console (F12).'); return;
+    }
+    setLoading(btn, true);
+    try{
+      const interest = document.querySelector('.chip-group').dataset.value || 'exploring';
+      const uid = await window.osaAuth.signUp(name, email, password);
+      // Fire-and-forget — do NOT await so sheet never blocks redirect
+      window.osaAuth.sendToSheet({ type:'signup', uid, name, email, interest });
+      // Redirect immediately after successful signup
+      window.location.href = 'service.html';
+    } catch(err){
+      setLoading(btn, false);
+      console.error('Signup error:', err);
+      if(err.code === 'auth/email-already-in-use') setError('signup-email',    friendlyAuthError(err));
+      else if(err.code === 'auth/weak-password')   setError('signup-password', friendlyAuthError(err));
+      else                                         setError('signup-confirm',  friendlyAuthError(err));
+    }
+  });
+ 
+})();
+</script>
+ 
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPT 2 — Firebase bridge
+     Uses Firebase 10.x (stable, widely used CDN version)
+     ═══════════════════════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp }                   from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+ 
+/* ── Your Firebase project config ── */
+const firebaseConfig = {
+  apiKey:            "AIzaSyBIjn9EEr9hJeSoDWPun39w1MAeY5BvMos",
+  authDomain:        "skill-mate-ai-b5b8f.firebaseapp.com",
+  projectId:         "skill-mate-ai-b5b8f",
+  storageBucket:     "skill-mate-ai-b5b8f.appspot.com",
+  messagingSenderId: "720243016023",
+  appId:             "1:720243016023:web:64ee8df4443844a469fe12"
+};
+ 
+/* ── IMPORTANT: paste your Google Apps Script /exec URL here ── */
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyhIhGvSDqoxfHe26hA5hvaMReqxxd_3b8WS-qv9JInCchsvslpUfLDJj_F51q2jEbF9Q/exec";
+ 
+function showFirebaseBanner(err){
+  const card = document.querySelector('.auth-card');
+  if(!card) return;
+  const b = document.createElement('div');
+  b.style.cssText = 'background:#FBEDEA;border:1px solid #B3463C;color:#7A2E26;font-size:0.78rem;border-radius:10px;padding:0.7rem 0.85rem;margin-bottom:1rem;line-height:1.5;';
+  b.innerHTML = '<strong>Firebase didn\'t load.</strong> Open the browser console (F12) for the exact error'
+    + (err && err.code ? ` — code: <code>${err.code}</code>` : '') + '.<br>'
+    + 'Most likely fix: enable <strong>Email/Password</strong> in Firebase Console → Authentication → Sign-in method.';
+  card.prepend(b);
+}
+ 
+/* ── FIX: send to Google Sheet using no-cors so browser doesn't block it ── */
+function sendToSheet(payload){
+  if(!GOOGLE_SCRIPT_URL) return;
+  // Use no-cors so the browser doesn't block cross-origin POST to Apps Script
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    // no-cors requires simple content-type; use text/plain and parse JSON in Apps Script
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).catch(err => console.warn('Google Sheet warning (non-critical):', err));
+}
+ 
+try{
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+ 
+  window.osaAuth = {
+    ready: true,
+ 
+    sendToSheet, // expose so Script 1 can call it
+ 
+    signIn: (email, pw) => signInWithEmailAndPassword(auth, email, pw),
+ 
+    signUp: async (name, email, pw) => {
+      const cred = await createUserWithEmailAndPassword(auth, email, pw);
+      // Update display name
+      await updateProfile(cred.user, { displayName: name });
+      // Save to Firestore
+      await setDoc(doc(db, 'users', cred.user.uid), {
+        name,
+        email,
+        createdAt: new Date()
+      });
+      return cred.user.uid;
+    },
+ 
+    resetPassword: (email) => sendPasswordResetEmail(auth, email)
+  };
+ 
+  console.log('✅ Firebase connected — project:', firebaseConfig.projectId);
+} catch(err){
+  console.error('Firebase failed to initialise:', err);
+  window.osaAuth = { ready: false, error: err };
+  showFirebaseBanner(err);
+}
+</script>
+ 
+</body>
+</html>
